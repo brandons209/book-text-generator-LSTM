@@ -54,6 +54,8 @@ print("Sequence length is {} and number of features for lstm input is 1.".format
 model = Sequential()
 #lstm layers:
 #input shape is (seq_length, 1)
+#may instead add dropout to the lstm linear transformations: dropout adds dropout to input, recurent_dropout adds dropout to the reccurrent states
+#mode.add(LSTM(600, dropout=0.3, recurrent_dropout=0.3, input_shape=(train_text.shape[1], train_text.shape[2]), return_sequences=True))
 model.add(LSTM(600, input_shape=(train_text.shape[1], train_text.shape[2]), return_sequences=True))#return_sequences to true since we have a second LSTM layer
 model.add(Dropout(0.5))
 model.add(LSTM(600))
